@@ -11,16 +11,18 @@ int main(void) {
     cin >> d[i];
   }
 
-  int j, tmp;
-  for (i = 0; i < N; i++) {
-    for (j = i + 1; j < N; j++) {
-      if (d[i] > d[j]) {
-        tmp = d[i];
-        d[i] = d[j];
-        d[j] = tmp;
-      }
-    }
-  }
+  // int j, tmp;
+  // for (i = 0; i < N; i++) {
+  //   for (j = i + 1; j < N; j++) {
+  //     if (d[i] > d[j]) {
+  //       tmp = d[i];
+  //       d[i] = d[j];
+  //       d[j] = tmp;
+  //     }
+  //   }
+  // }
+
+  sort(d.begin(), d.end());
 
   int count = 0;
   int memory;
