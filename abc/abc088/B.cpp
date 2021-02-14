@@ -11,16 +11,19 @@ int main(void) {
     cin >> a[i];
   }
 
-  int j, tmp;
-  for (i = 0; i < N; i++) {
-    for (j = i + 1; j < N; j++) {
-      if (a[i] < a[j]) {
-        tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-      }
-    }
-  }
+  // int j, tmp;
+  // for (i = 0; i < N; i++) {
+  //   for (j = i + 1; j < N; j++) {
+  //     if (a[i] < a[j]) {
+  //       tmp = a[i];
+  //       a[i] = a[j];
+  //       a[j] = tmp;
+  //     }
+  //   }
+  // }
+
+  sort(a.begin(), a.end());
+  reverse(a.begin(), a.end());
 
   vector<int> point(2, 0);
   for (i = 0; i < N; i++) {
