@@ -17,14 +17,13 @@ int index_side_blank(vector<vector<char>> a, int h, int w) {
   return -1;
 }
 
-void remove_side_blank(vector<vector<char>> &a, int &h, int w, int index) {
+void remove_side_blank(vector<vector<char>> &a, int h, int w, int index) {
   int i, j;
   for (i = 0; i < w; i++) {
     for (j = index; j < h - 1; j++) {
-      a[i][j] = a[i + 1][j];
+      a[j][i] = a[j + 1][i];
     }
   }
-  h--;
 }
 
 int index_vertical_blank(vector<vector<char>> a, int h, int w) {
@@ -43,14 +42,13 @@ int index_vertical_blank(vector<vector<char>> a, int h, int w) {
   return -1;
 }
 
-void remove_vertical_blank(vector<vector<char>> &a, int h, int &w, int index) {
+void remove_vertical_blank(vector<vector<char>> &a, int h, int w, int index) {
   int i, j;
   for (i = 0; i < h; i++) {
     for (j = index; j < w - 1; j++) {
       a[i][j] = a[i][j + 1];
     }
   }
-  w--;
 }
 
 int main(void) {
@@ -67,14 +65,14 @@ int main(void) {
 
   int side_index, vertical_index;
   int ahi = 0;
-  while ((side_index = index_side_blank(a, H, W)) != -1 || (vertical_index = index_vertical_blank(a, H, W)) != -1) {
-    cout << ahi << endl;
-    if (side_index != -1) {
-      remove_side_blank(a, H, W, side_index);
-    }
-    if (vertical_index != -1) {
-      remove_vertical_blank(a, H, W, vertical_index);
-    }
+  while ((side_index = index_side_blank(a, H, W)) != -1) {
+    remove_side_blank(a, H, W, side_index);
+    H--;
+  }
+
+  while ((vertical_index = index_vertical_blank(a, H, W)) != -1) {
+    remove_vertical_blank(a, H, W, vertical_index);
+    W--;
   }
 
   for (i = 0; i < H; i++) {
